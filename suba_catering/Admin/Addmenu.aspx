@@ -34,7 +34,32 @@
 
         <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-2">
             <div class="col-md-6">
-                <asp:GridView ID="gridview1" runat="server" CssClass="table table-hover table-bordered"></asp:GridView>
+                <asp:GridView ID="gridview1" runat="server" CssClass="table table-hover table-bordered" DataKeyNames="menuitemid" EmptyDataText="No record to display" AutoGenerateColumns="False" OnRowEditing="gridview1_RowEditing" OnPageIndexChanging="gridview1_PageIndexChanging" OnRowCancelingEdit="gridview1_RowCancelingEdit" OnRowUpdating="gridview1_RowUpdating" AllowPaging="True" PageSize="5">
+                    <Columns>
+                        <asp:BoundField DataField="Sr.No" HeaderText="Sr.No" ReadOnly="True">
+                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        </asp:BoundField>                       
+                        <asp:TemplateField HeaderText="Name">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TxtMenuName" runat="server" Text='<%# Eval("menuitemname") %>' CssClass="form-control"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="LblMenuName" runat="server" Text='<%# Eval("menuitemname") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Price">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TxtItemPrice" runat="server" Text='<%# Eval("menupriceID") %>' CssClass="form-control"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="LblItemPrice" runat="server" Text='<%# Eval("menupriceID") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                        <asp:CommandField CausesValidation="False" HeaderText="Operation" ShowEditButton="True" />
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
     </div>
