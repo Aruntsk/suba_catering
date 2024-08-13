@@ -34,7 +34,7 @@
 
         <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-2">
             <div class="col-md-6">
-                <asp:GridView ID="gridview1" runat="server" CssClass="table table-hover table-bordered" DataKeyNames="menuitemid" EmptyDataText="No record to display" AutoGenerateColumns="False" OnRowEditing="gridview1_RowEditing" OnPageIndexChanging="gridview1_PageIndexChanging" OnRowCancelingEdit="gridview1_RowCancelingEdit" OnRowUpdating="gridview1_RowUpdating" AllowPaging="True" PageSize="5">
+                <asp:GridView ID="gridview1" runat="server" CssClass="table table-hover table-bordered" DataKeyNames="menuitemid" EmptyDataText="No record to display" AutoGenerateColumns="False" OnRowEditing="gridview1_RowEditing" OnPageIndexChanging="gridview1_PageIndexChanging" OnRowCancelingEdit="gridview1_RowCancelingEdit" OnRowUpdating="gridview1_RowUpdating" AllowPaging="True" PageSize="5" OnRowDeleting="gridview1_RowDeleting">
                     <Columns>
                         <asp:BoundField DataField="Sr.No" HeaderText="Sr.No" ReadOnly="True">
                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -57,7 +57,7 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:CommandField CausesValidation="False" HeaderText="Operation" ShowEditButton="True" />
+                        <asp:CommandField CausesValidation="False" HeaderText="Operation" ShowEditButton="True" ShowDeleteButton="True" />
                     </Columns>
                 </asp:GridView>
             </div>

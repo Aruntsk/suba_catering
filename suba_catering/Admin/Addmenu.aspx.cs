@@ -69,6 +69,7 @@ namespace suba_catering.Admin
         protected void gridview1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gridview1.EditIndex = e.NewEditIndex;
+            GetMenuItems();
         }
 
         protected void gridview1_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -88,6 +89,24 @@ namespace suba_catering.Admin
             }
             catch (Exception ex)
             {
+                Response.Write("<script>alert('" + ex.Message + "')</script>");
+            }
+        }
+
+        protected void gridview1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int mId = Convert.ToInt32(gridview1.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete from menuitems where menuitemid = '" + mId + "'");
+                lblMsg.Text = "Delteted Suceessfully";
+                lblMsg.CssClass = "alert alert-success";
+                gridview1.EditIndex = -1;
+                GetMenuItems();
+            }
+            catch (Exception ex)
+            {
+
                 Response.Write("<script>alert('" + ex.Message + "')</script>");
             }
         }
